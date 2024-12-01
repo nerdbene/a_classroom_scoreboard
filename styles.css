@@ -1,0 +1,353 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Fira+Code&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    min-height: 100vh;
+}
+
+.top-nav {
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 1rem;
+}
+
+.nav-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.title {
+    font-family: 'Comic Neue', cursive;
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-button {
+    color: #666;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #ddd;
+}
+
+.nav-button:hover {
+    background-color: #f0f0f0;
+    border-color: #999;
+}
+
+.download-icon, .git-logo {
+    fill: currentColor;
+}
+
+.author {
+    font-family: 'Fira Code', monospace;
+    color: #666;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.white-canvas {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    min-height: 400px;
+    padding: 20px;
+}
+
+.action-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.primary-button {
+    background-color: #2196F3;
+}
+
+.primary-button:hover {
+    background-color: #1976D2;
+}
+
+.secondary-button {
+    background-color: #FF6B00;
+}
+
+.secondary-button:hover {
+    background-color: #E65100;
+}
+
+.teams-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.team-column {
+    background: #f8f8f8;
+    border-radius: 8px;
+    padding: 20px;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+.team-name {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 8px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+}
+
+.team-name:hover {
+    background: #f0f0f0;
+    border-color: #ddd;
+}
+
+.team-name.editing {
+    background: white;
+    border-color: #2196F3;
+    outline: none;
+}
+
+.score-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.score-button {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 4px;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.minus-button {
+    background: #ff4444;
+    color: white;
+}
+
+.minus-button:hover {
+    background: #cc0000;
+}
+
+.plus-button {
+    background: #00C851;
+    color: white;
+}
+
+.plus-button:hover {
+    background: #007E33;
+}
+
+.score-display {
+    font-size: 48px;
+    font-weight: bold;
+    text-align: center;
+    margin: 15px 0;
+    color: #2196F3;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#addTeamBtn {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.plus-icon {
+    font-size: 20px;
+}
+
+.team-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.action-icon-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.3s;
+    padding: 5px;
+}
+
+.action-icon-button:hover {
+    transform: scale(1.2);
+}
+
+.delete-button {
+    color: #ff4444;
+}
+
+.crown-button {
+    color: #ffd700;
+}
+
+.celebration-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.celebration-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.winner-announcement {
+    text-align: center;
+    color: white;
+    font-size: 48px;
+    font-weight: bold;
+    animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #ffd700;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    0% { 
+        transform: translateY(-100vh) rotate(0deg); 
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% { 
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Multiple animation durations for variety */
+.confetti.slow {
+    animation-duration: 4.5s;
+}
+
+.confetti.medium {
+    animation-duration: 3.5s;
+}
+
+.confetti.fast {
+    animation-duration: 2.5s;
+}
+
+/* Add some swaying */
+.confetti.sway-left {
+    animation: fallLeft linear forwards;
+}
+
+.confetti.sway-right {
+    animation: fallRight linear forwards;
+}
+
+@keyframes fallLeft {
+    0% { 
+        transform: translateY(-100vh) translateX(0) rotate(0deg);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(0) translateX(-20px) rotate(180deg);
+        opacity: 1;
+    }
+    100% { 
+        transform: translateY(100vh) translateX(-35px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes fallRight {
+    0% { 
+        transform: translateY(-100vh) translateX(0) rotate(0deg);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(0) translateX(20px) rotate(180deg);
+        opacity: 1;
+    }
+    100% { 
+        transform: translateY(100vh) translateX(35px) rotate(360deg);
+        opacity: 0;
+    }
+}
